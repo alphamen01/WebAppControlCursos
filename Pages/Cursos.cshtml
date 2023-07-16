@@ -1,4 +1,35 @@
 ﻿@page
 @model WebAppControlCursos.Pages.CursosModel
 @{
+    ViewData["Title"] = "Cursos";
 }
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    &nbsp;
+    <table class="table">
+        
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NOMBRES</th>
+                    <th scope="col">DESCRIPCION</th>
+                    <th scope="col">AUTOR</th>
+                    <th scope="col">URL</th>
+                </tr>
+            </thead>
+
+        @foreach (var course in Model.Courses)
+        {
+            <tdbody>
+                <tr>
+                    <th scope="col">@course.Id</th>
+                    <th scope="col">@course.Name</th>
+                    <th scope="col">@course.Description</th>
+                    <th scope="col">@course.Author</th>
+                    <th scope="col">@course.Uri</th>
+                </tr>
+            </tdbody>
+        }
+        
+    </table>
+</div>

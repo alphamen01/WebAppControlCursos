@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WebAppControlCursos.Interfaces;
 using WebAppControlCursos.Models;
@@ -41,12 +42,12 @@ namespace WebAppControlCursos.Providers
 
         public Task<ICollection<Course>> GetAllAsync()
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult((ICollection<Course>)repo.ToList());
         }
 
         public Task<Course> GetAsync(int id)
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(repo.FirstOrDefault(c => c.Id == id));
         }
     }
 }
