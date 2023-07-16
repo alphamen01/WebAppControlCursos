@@ -6,6 +6,22 @@
 <div class="text-center">
     <h1 class="display-4">@ViewData["Title"]</h1>
     &nbsp;
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search"
+                    class="form-control"
+                    asp-for="Search"
+                    
+                    />
+
+                <button class="btn btn-light">
+                    Buscar
+                </button>
+            </div>
+        </div>
+    </form>
+    &nbsp;
     <table class="table">
         
             <thead class="thead-dark">

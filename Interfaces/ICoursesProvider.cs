@@ -8,6 +8,7 @@ namespace WebAppControlCursos.Interfaces
     public interface ICoursesProvider
     {
         Task<ICollection<Course>> GetAllAsync();
+        Task<ICollection<Course>> SearchAsync(string search);
         Task<Course> GetAsync(int id);
         
     }
