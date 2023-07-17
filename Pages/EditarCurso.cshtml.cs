@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 using WebAppControlCursos.Interfaces;
 using WebAppControlCursos.Models;
 
@@ -16,11 +17,25 @@ namespace WebAppControlCursos.Pages
         {
             this.coursesProvider = coursesProvider;
         }
-        public void OnGet()
+        public async Task<IActionResult> OnGet(int id)
         {
+            var course= await coursesProvider.GetAsync(id);
+            if (course!=null)
+            {
+                Course = course;
+            }
+
+            return Page();
         }
-        public void OnPost() { 
-        
+        public async Task<IActionResult> OnPost() {
+
+           var result = await coursesProvider.UpdateAsync(Course.Id, Course);
+            if (result)
+            {
+                return RedirectToPage("Cursos");
+            }
+
+            return Page();
         }
     }
 }
