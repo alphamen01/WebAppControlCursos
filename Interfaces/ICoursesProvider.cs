@@ -10,6 +10,8 @@ namespace WebAppControlCursos.Interfaces
         Task<ICollection<Course>> GetAllAsync();
         Task<ICollection<Course>> SearchAsync(string search);
         Task<Course> GetAsync(int id);
+
+        Task<bool> UpdateAsync(int id, Course  course);
         
     }
 }
