@@ -30,6 +30,7 @@
                     <th scope="col">DESCRIPCION</th>
                     <th scope="col">AUTOR</th>
                     <th scope="col">URL</th>
+                    <th scope="col">OPCIONES</th>
                 </tr>
             </thead>
 
@@ -42,6 +43,13 @@
                     <th scope="col">@course.Description</th>
                     <th scope="col">@course.Author</th>
                     <th scope="col">@course.Uri</th>
+                    <th scope="col">
+                        <a class="btn btn-primary"
+                        asp-page="DetalleCurso"
+                           asp-route-id="@course.Id">
+                           Detalle
+                        </a>
+                    </th>
                 </tr>
             </tdbody>
         }
