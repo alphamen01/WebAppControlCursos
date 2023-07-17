@@ -20,17 +20,24 @@
             </div>
         </div>
     </form>
-    &nbsp;
+    
+    <div>
+        <a class="btn btn-success"
+           asp-page="EditarCurso">
+            Agregar
+        </a>
+    </div>
+    &nbsp;    
     <table class="table">
         
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">NOMBRES</th>
-                    <th scope="col">DESCRIPCION</th>
-                    <th scope="col">AUTOR</th>
-                    <th scope="col">URL</th>
-                    <th scope="col">OPCIONES</th>
+                    <th scope="col" style="width:5%">ID</th>
+                    <th scope="col" style="width:17%">NOMBRES</th>
+                    <th scope="col" style="width:25%">DESCRIPCION</th>
+                    <th scope="col" style="width:14%">AUTOR</th>
+                    <th scope="col" style="width:20%">URL</th>
+                    <th scope="col" style="width:19%">OPCIONES</th>
                 </tr>
             </thead>
 
@@ -54,6 +61,7 @@
                            asp-route-id="@course.Id">
                             Editar
                         </a>
+                        
                     </th>
                     
                 </tr>
