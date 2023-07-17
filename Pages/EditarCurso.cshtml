@@ -1,0 +1,34 @@
+﻿@page
+@model WebAppControlCursos.Pages.EditarCursoModel
+@{
+    ViewData["Title"] = "Editar";
+}
+
+
+<h1 class="display-4">@Model.Course.Name</h1>
+&nbsp;
+
+<form method="post">
+    <input type="hidden" asp-for="@Model.Course.Id"/>
+    <div class="form-group">
+        <label for="formGroupExampleInput" asp-for="Course.Name"></label>
+        <input type="text" class="form-control" placeholder="Name input" asp-for="Course.Name">
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput" asp-for="Course.Description"></label>
+        <textarea class="form-control" placeholder="Description textarea" asp-for="Course.Description"/>
+    </div>
+    
+    <div class="form-group">
+        <label for="formGroupExampleInput" asp-for="Course.Author"></label>
+        <input type="text" class="form-control" placeholder="Author input" asp-for="Course.Author">
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput" asp-for="Course.Uri"></label>
+        <input type="text" class="form-control" placeholder="Uri input" asp-for="Course.Uri">
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>

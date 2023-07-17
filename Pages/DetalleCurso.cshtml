@@ -1,10 +1,10 @@
 ﻿@page
 @model WebAppControlCursos.Pages.DetalleCursoModel
 @{
-    ViewData["Title"] = Model.Course.Name;
+    ViewData["Title"] = "DetalleCurso";
 }
 <div class="text-center">
-    <h1 class="display-4">@ViewData["Title"]</h1>
+    <h1 class="display-4">@Model.Course.Name</h1>
     &nbsp;
     <div class="card text-center">
 
