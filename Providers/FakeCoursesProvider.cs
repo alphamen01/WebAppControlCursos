@@ -47,7 +47,12 @@ namespace WebAppControlCursos.Providers
             return Task.FromResult((true, (int?)course.Id));
         }
 
-        public Task<ICollection<Course>> GetAllAsync()
+		public Task<Course> DeleteAsync(int id)
+		{
+			throw new System.NotImplementedException();
+		}
+
+		public Task<ICollection<Course>> GetAllAsync()
         {
             return Task.FromResult((ICollection<Course>)repo.ToList());
         }

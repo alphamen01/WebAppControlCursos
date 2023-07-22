@@ -25,6 +25,7 @@ namespace WebAppControlCursos
             {
 				//c.BaseAddress = new Uri(Configuration["CoursesService"]);
 				c.BaseAddress = new Uri("https://webapicursos.azurewebsites.net/");
+				//c.BaseAddress = new Uri("https://localhost:44329");
 			});
             services.AddSingleton<ICoursesProvider, WebApiCursosProvider>();
             services.AddRazorPages();
