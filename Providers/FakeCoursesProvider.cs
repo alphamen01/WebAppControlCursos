@@ -15,7 +15,7 @@ namespace WebAppControlCursos.Providers
             {
                 Id = 1,
                 Name = "Sistemas Operativos",
-                Author= "Luis Sanchez",
+                Teacher= "Luis Sanchez",
                 Description= "Tecnologia",
                 Uri = "https://github.com/alphamen01"
             });
@@ -24,7 +24,7 @@ namespace WebAppControlCursos.Providers
             {
                 Id = 2,
                 Name = "Java",
-                Author = "Luis Geronimo",
+                Teacher = "Luis Geronimo",
                 Description = "Programacion",
                 Uri = "https://github.com/alphamen01"
             });
@@ -33,7 +33,7 @@ namespace WebAppControlCursos.Providers
             {
                 Id = 3,
                 Name = "C#",
-                Author = "Luis Tejada",
+                Teacher = "Luis Tejada",
                 Description = "Programacion",
                 Uri = "https://github.com/alphamen01"
             });
@@ -74,7 +74,7 @@ namespace WebAppControlCursos.Providers
             {
                 courseToUpdate.Name = course.Name;
                 courseToUpdate.Description = course.Description;
-                courseToUpdate.Author = course.Author;
+                courseToUpdate.Teacher = course.Teacher;
                 courseToUpdate.Uri = course.Uri;
 
                 return Task.FromResult(true);
