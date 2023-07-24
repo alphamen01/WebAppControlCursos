@@ -10,7 +10,7 @@ namespace WebAppControlCursos.Pages
     public class CursosModel : PageModel
     {
         private readonly ICoursesProvider coursesProvider;
-
+        
         public  List<Course> Courses { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -42,6 +42,16 @@ namespace WebAppControlCursos.Pages
             }
             
             return Page ();
+        }
+
+        public async Task<ActionResult> OnPost(int id)
+        {
+            var course = await coursesProvider.EliminarAsync(id);
+            if (course == null)
+            {
+                return RedirectToPage("Cursos");
+            }
+            return null;
         }
     }
 }

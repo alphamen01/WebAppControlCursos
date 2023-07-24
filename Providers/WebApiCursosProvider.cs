@@ -36,25 +36,20 @@ namespace WebAppControlCursos.Providers
 			return (false, null);
 		}
 
-		public async Task<Course> DeleteAsync(int id)
-		{
-			var client = httpClientFactory.CreateClient("coursesService");
-			var response = await client.DeleteAsync($"api/cursos/{id}");
+        public async Task<Course> EliminarAsync(int id)
+        {            
+                var client = httpClientFactory.CreateClient("coursesService");
+                var response = await client.DeleteAsync($"api/cursos/{id}");
 
-			if (response.IsSuccessStatusCode)
-			{
-				var content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+					return null;
+				}
+				
+				return null;
+        }
 
-				var result = JsonSerializer.Deserialize<Course>(content, new JsonSerializerOptions()
-				{ PropertyNameCaseInsensitive = true });
-
-				return result;
-			}
-
-			return null;
-		}
-
-		public async Task<ICollection<Course>> GetAllAsync()
+        public async Task<ICollection<Course>> GetAllAsync()
 		{
 			var client = httpClientFactory.CreateClient("coursesService");
 

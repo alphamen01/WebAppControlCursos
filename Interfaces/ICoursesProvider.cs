@@ -15,7 +15,7 @@ namespace WebAppControlCursos.Interfaces
 
         Task<(bool IsSuccess, int? Id)> AddAsync(Course course);
 
-		Task<Course> DeleteAsync(int id);
+		Task<Course> EliminarAsync(int id);
 
 	}
 }

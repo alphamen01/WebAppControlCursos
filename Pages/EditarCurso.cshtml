@@ -24,7 +24,7 @@
     
     <div class="form-group">
         <label for="formGroupExampleInput" asp-for="Course.Teacher"></label>
-        <input type="text" class="form-control" placeholder="Author input" asp-for="Course.Teacher">
+        <input type="text" class="form-control" placeholder="Teacher input" asp-for="Course.Teacher">
         <span class="text-danger" asp-validation-for="Course.Teacher"></span>
     </div>
 
@@ -35,4 +35,5 @@
     </div>
 
     <button type="submit" class="btn btn-success">Guardar</button>
+    <a class="btn btn-secondary" asp-page="Cursos">Regresar</a>
 </form>

@@ -47,7 +47,7 @@ namespace WebAppControlCursos.Providers
             return Task.FromResult((true, (int?)course.Id));
         }
 
-		public Task<Course> DeleteAsync(int id)
+		public Task<Course> EliminarAsync(int id)
 		{
 			throw new System.NotImplementedException();
 		}
