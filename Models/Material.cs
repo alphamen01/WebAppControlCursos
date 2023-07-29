@@ -1,15 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace WebAppControlCursos.Models
 {
-    public class Course
-    {
+	public class Material
+	{
 		[Key]
 		[Required]
-		[Display(Name = "CourseId")]
+		[Display(Name = "MaterialId")]
 		[DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
+
+		[Required]
+		public int CourseId { get; set; }
+
+		[ForeignKey("CourseId")]
+		public Course Course { get; set; }
 
 		[Required(ErrorMessage = "El nombre es requerido")]
 		[Display(Name = "Nombre")]
@@ -20,16 +27,5 @@ namespace WebAppControlCursos.Models
 		[Required]
 		[Display(Name = "Descripcion")]
 		public string Description { get; set; }
-
-		[Required(ErrorMessage = "El(La) docente es requerido(a)")]
-		[MaxLength(150)]
-		[Display(Name = "Docente")]
-		public string Teacher { get; set; }
-
-		[Url(ErrorMessage = "La direccion no es valida")]
-		[MaxLength(150)]
-		[Display(Name = "Url")]
-		[Required]
-		public string Uri { get; set; }
 	}
 }
