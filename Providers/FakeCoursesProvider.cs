@@ -52,9 +52,19 @@ namespace WebAppControlCursos.Providers
 			throw new System.NotImplementedException();
 		}
 
-		public Task<ICollection<Course>> GetAllAsync()
+        public Task<Course> EliminarAsyncPaginado(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<ICollection<Course>> GetAllAsync()
         {
             return Task.FromResult((ICollection<Course>)repo.ToList());
+        }
+
+        public Task<Pager> GetAllAsyncPaginado(int pager, int size)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Task<Course> GetAsync(int id)
@@ -65,6 +75,11 @@ namespace WebAppControlCursos.Providers
         public Task<ICollection<Course>> SearchAsync(string search)
         {
             return Task.FromResult((ICollection<Course>)repo.Where(c => c.Name.ToLowerInvariant().Contains(search.ToLowerInvariant())).ToList());
+        }
+
+        public Task<Pager> SearchAsyncPaginado(string search)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Task<bool> UpdateAsync(int id, Course course)

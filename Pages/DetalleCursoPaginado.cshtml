@@ -1,0 +1,48 @@
+﻿@page
+@model WebAppControlCursos.Pages.DetalleCursoPaginadoModel
+@{
+    ViewData["Title"] = "DetalleCurso";
+}
+<div class="text-center">
+    <h1 class="display-4">@Model.Course.Name</h1>
+    &nbsp;
+    <div class="card text-center">
+
+        <div class="card-header">
+            Descripcion
+        </div>
+        <div class="card-text">
+            @Model.Course.Description
+        </div>
+
+    </div>
+    &nbsp;
+    <div class="card text-center">
+
+        <div class="card-header">
+            Docente
+        </div>
+        <div class="card-text">
+            @Model.Course.Teacher
+        </div>
+
+    </div>
+    &nbsp;
+    <div class="card text-center">
+
+        <div class="card-header">
+            Direccion
+        </div>
+        <div class="card-text">
+            @Model.Course.Uri
+        </div>
+
+    </div>
+    &nbsp;
+
+    <div>
+        <a asp-page="CursosPaginado" class="btn btn-primary">Ver la lista completa de Cursos</a>
+    </div>
+
+
+</div> 

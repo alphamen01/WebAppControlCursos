@@ -66,7 +66,25 @@ namespace WebAppControlCursos.Providers
 			return null;
         }
 
-		public async Task<Course> GetAsync(int id)
+        public async Task<Pager> GetAllAsyncPaginado(int pager, int size)
+        {
+            var client = httpClientFactory.CreateClient("coursesService");
+            var response = await client.GetAsync($"api/cursos/paginado?page={pager}&size={size}");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                var result = JsonSerializer.Deserialize<Pager>(content, new JsonSerializerOptions()
+                { PropertyNameCaseInsensitive = true });
+
+                return result;
+            }
+
+            return null;
+
+        }
+
+        public async Task<Course> GetAsync(int id)
 		{
 			var client = httpClientFactory.CreateClient("coursesService");
 			var response = await client.GetAsync($"api/cursos/{id}");
@@ -102,7 +120,24 @@ namespace WebAppControlCursos.Providers
 
 		}
 
-		public async Task<bool> UpdateAsync(int id, Course course)
+        public async Task<Pager> SearchAsyncPaginado(string search)
+        {
+            var client = httpClientFactory.CreateClient("coursesService");
+
+            var response = await client.GetAsync($"api/cursos/searchpaginado/{search}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                //byte[] byteArray = Encoding.UTF8.GetBytes(content); 
+                var result = JsonSerializer.Deserialize<Pager>(content, new JsonSerializerOptions()
+                { PropertyNameCaseInsensitive = true });
+                return result;
+            }
+            return null;
+        }
+
+        public async Task<bool> UpdateAsync(int id, Course course)
 		{
 			var client = httpClientFactory.CreateClient("coursesService");
 

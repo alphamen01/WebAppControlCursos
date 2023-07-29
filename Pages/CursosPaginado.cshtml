@@ -1,0 +1,116 @@
+﻿@page
+@model WebAppControlCursos.Pages.CursosPaginadoModel
+@{
+}
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search"
+                   class="form-control"
+                   asp-for="Search" />
+
+            <button class="btn btn-light">
+                Buscar
+            </button>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a class="btn btn-success"
+       asp-page="EditarCursoPaginado">
+        Agregar
+    </a>
+</div>
+&nbsp;
+<div class="table-responsive">
+   
+    <table class="table table-bordered">
+        @{
+            if (Model.PagerCourses != null && Model.PagerCourses.TotalItems > 0)
+            {
+                <thead class="thead-dark text-center">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOMBRES</th>
+                        <th scope="col">OPCIONES</th>
+                    </tr>
+                </thead>
+
+                <tdbody>
+                    @foreach (var course in Model.PagerCourses.Courses)
+                    {
+                        <tr class="text-center">
+                            <th scope="col">@course.Id</th>
+                            <th scope="col">@course.Name</th>
+                            <th scope="col">
+                                <a class="btn btn-primary"
+                                   asp-page="DetalleCursoPaginado"
+                                   asp-route-id="@course.Id">
+                                    Detalle
+                                </a>
+                                <a class="btn btn-secondary"
+                                   asp-page="EditarCursoPaginado"
+                                   asp-route-id="@course.Id">
+                                    Editar
+                                </a>
+                                <form method="post" class="btn pl-0 pr-0 pt-0 pb-0">
+                                    <button class="btn btn-danger" asp-route-id="@course.Id">Eliminar</button>
+                                </form>
+                            </th>
+                        </tr>
+                    }
+                </tdbody>
+            }
+            else
+            {
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">NO HAY DATOS EN ESTA TABLA</th>
+                    </tr>
+                </thead>
+            }
+        }
+    </table>
+    &nbsp;
+    <nav aria-label="Page navigation example">
+        <!-- paginación -->
+        @if (Model.PagerCourses != null && Model.PagerCourses.EndPage > 1)
+        {
+            
+            <ul class="pagination justify-content-center">
+
+                @if (Model.PagerCourses.CurrentPage > 1)
+                {
+                    <li class="page-item"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@Model.PagerCourses.StartPage" asp-route-size="@Model.PagerCourses.PageSize">Primero</a></li>
+                    <li class="page-item"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@(Model.PagerCourses.CurrentPage - 1)" asp-route-size="@Model.PagerCourses.PageSize">Anterior</a></li>
+                }
+                else if (Model.PagerCourses.CurrentPage == 1)
+                {
+                    <li class="page-item disabled"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@Model.PagerCourses.CurrentPage" asp-route-size="@Model.PagerCourses.PageSize">Primero</a></li>
+                }
+
+                <!--Paginación activa-->
+                @for (var p = Model.PagerCourses.StartPage; p <= Model.PagerCourses.EndPage; p++)
+                {
+                    <li class="@(p == Model.PagerCourses.CurrentPage ? "page-item active" : "")"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@p" asp-route-size="@Model.PagerCourses.PageSize">@p</a></li>
+                }
+
+                @if (Model.PagerCourses.CurrentPage < Model.PagerCourses.TotalPages)
+                {
+                    <li class="page-item"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@(Model.PagerCourses.CurrentPage + 1)" asp-route-size="@Model.PagerCourses.PageSize">Siguiente</a></li>
+                    <li class="page-item"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@Model.PagerCourses.TotalPages" asp-route-size="@Model.PagerCourses.PageSize">Último</a></li>
+                }
+                else if (Model.PagerCourses.CurrentPage == Model.PagerCourses.TotalPages)
+                {
+                    <li class="page-item"><a class="page-link" asp-page="CursosPaginado" asp-route-pager="@Model.PagerCourses.TotalPages" asp-route-size="@Model.PagerCourses.PageSize">Último</a></li>
+                }
+            </ul>
+        }
+        else if (Model.PagerCourses == null)
+        {          
+
+        }
+    </nav>
+</div>
