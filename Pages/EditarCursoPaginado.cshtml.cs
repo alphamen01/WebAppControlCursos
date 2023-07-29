@@ -13,6 +13,9 @@ namespace WebAppControlCursos.Pages
         [BindProperty]
         public Course Course { get; set; }
 
+        [TempData]
+        public string Mensaje { get; set; }
+
         public EditarCursoPaginadoModel(ICoursesProvider coursesProvider)
         {
             this.coursesProvider = coursesProvider;
@@ -45,6 +48,7 @@ namespace WebAppControlCursos.Pages
                 var result = await coursesProvider.AddAsync(Course);
                 if (result.IsSuccess)
                 {
+                    Mensaje = "Curso creado correctamente.";
                     return RedirectToPage("CursosPaginado");
                 }
                 return Page();
@@ -54,6 +58,7 @@ namespace WebAppControlCursos.Pages
                 var result = await coursesProvider.UpdateAsync(Course.Id, Course);
                 if (result)
                 {
+                    Mensaje = "Curso actualizado correctamente.";
                     return RedirectToPage("CursosPaginado");
                 }
             }

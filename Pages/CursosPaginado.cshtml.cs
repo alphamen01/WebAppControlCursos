@@ -13,9 +13,12 @@ namespace WebAppControlCursos.Pages
 
         [BindProperty]
         public Pager PagerCourses { get; set; }
-
+        
         [BindProperty(SupportsGet = true)]
         public string Search { get; set; }
+
+        [TempData]
+        public string Mensaje { get; set; }
 
         public CursosPaginadoModel(ICoursesProvider coursesProvider)
         {
@@ -64,7 +67,7 @@ namespace WebAppControlCursos.Pages
             var course = await coursesProvider.EliminarAsync(id);
             if (course == null)
             {
-                
+                Mensaje = "Curso eliminado correctamente.";
                 return RedirectToPage("CursosPaginado");
             }
             return null;

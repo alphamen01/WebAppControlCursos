@@ -16,6 +16,8 @@ namespace WebAppControlCursos.Pages
         [BindProperty(SupportsGet = true)]
         public string Search { get; set; }
 
+        [TempData]
+        public string Mensaje { get; set; }
 
         public CursosModel(ICoursesProvider coursesProvider)
         {
@@ -49,6 +51,7 @@ namespace WebAppControlCursos.Pages
             var course = await coursesProvider.EliminarAsync(id);
             if (course == null)
             {
+                Mensaje = "Curso eliminado correctamente.";
                 return RedirectToPage("Cursos");
             }
             return null;
