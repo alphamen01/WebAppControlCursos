@@ -46,7 +46,7 @@ namespace WebAppControlCursos.Pages
             return Page ();
         }
 
-        public async Task<ActionResult> OnPost(int id)
+        public async Task<IActionResult> OnPost(int id)
         {
             var course = await coursesProvider.EliminarAsync(id);
             if (course == null)

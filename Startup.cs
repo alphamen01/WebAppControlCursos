@@ -28,7 +28,8 @@ namespace WebAppControlCursos
 				//c.BaseAddress = new Uri("https://localhost:44329");
 			});
             services.AddSingleton<ICoursesProvider, WebApiCursosProvider>();
-            services.AddRazorPages();
+			services.AddSingleton<IMaterialsProvider, WebApiMaterialesProvider>();
+			services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

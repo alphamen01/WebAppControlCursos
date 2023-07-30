@@ -16,7 +16,7 @@ namespace WebAppControlCursos.Pages
         {
             this.coursesProvider = coursesProvider;
         }
-        public async Task<ActionResult> OnGet(int id)
+        public async Task<IActionResult> OnGet(int id)
         {
             var course = await coursesProvider.GetAsync(id);
             if (course != null)
