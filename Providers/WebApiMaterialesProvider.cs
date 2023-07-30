@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -31,5 +32,22 @@ namespace WebAppControlCursos.Providers
 			}
 			return null;
 		}
-	}
+
+        public async Task<PagerMaterial> GetAllMaterialsAsyncPaginado(int id, int pager, int size)
+        {
+            var client = httpClientFactory.CreateClient("coursesService");
+            var response = await client.GetAsync($"api/materiales/paginado?id={id}&page={pager}&size={size}");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                var result = JsonSerializer.Deserialize<PagerMaterial>(content, new JsonSerializerOptions()
+                { PropertyNameCaseInsensitive = true });
+
+                return result;
+            }
+
+            return null;
+        }
+    }
 }
