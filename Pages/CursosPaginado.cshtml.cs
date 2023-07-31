@@ -28,7 +28,7 @@ namespace WebAppControlCursos.Pages
         {
             if (!string.IsNullOrWhiteSpace(Search))
             {
-                var results = await coursesProvider.SearchAsyncPaginado(Search);
+                var results = await coursesProvider.SearchAsyncPaginado(Search,pager,size);
                 if (results != null && results.Courses.Count > 0)
                 {
                     PagerCourses = results;

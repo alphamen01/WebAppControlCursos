@@ -77,7 +77,7 @@ namespace WebAppControlCursos.Providers
             return Task.FromResult((ICollection<Course>)repo.Where(c => c.Name.ToLowerInvariant().Contains(search.ToLowerInvariant())).ToList());
         }
 
-        public Task<Pager> SearchAsyncPaginado(string search)
+        public Task<Pager> SearchAsyncPaginado(string search, int pager, int size)
         {
             throw new System.NotImplementedException();
         }

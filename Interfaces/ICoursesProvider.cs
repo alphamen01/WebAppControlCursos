@@ -19,6 +19,6 @@ namespace WebAppControlCursos.Interfaces
 
         Task<Pager> GetAllAsyncPaginado(int pager, int size);
 
-        Task<Pager> SearchAsyncPaginado(string search);
+        Task<Pager> SearchAsyncPaginado(string search,int pager, int size);
     }
 }

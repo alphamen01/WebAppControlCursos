@@ -120,11 +120,11 @@ namespace WebAppControlCursos.Providers
 
 		}
 
-        public async Task<Pager> SearchAsyncPaginado(string search)
+        public async Task<Pager> SearchAsyncPaginado(string search, int pager, int size)
         {
             var client = httpClientFactory.CreateClient("coursesService");
 
-            var response = await client.GetAsync($"api/cursos/searchpaginado/{search}");
+            var response = await client.GetAsync($"api/cursos/searchpaginado?search={search}&page={pager}&size={size}");
 
             if (response.IsSuccessStatusCode)
             {
